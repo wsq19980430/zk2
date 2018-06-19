@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <link rel="stylesheet" href="./scss/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <section>
+            <h2>必买大牌</h2>
+            <div>
+                <!--<dl>
+                    <dt><img src="./img/1.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/2.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/3.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/4.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/5.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/6.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/7.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/8.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>
+                <dl>
+                    <dt><img src="./img/9.jpg" alt=""></dt>
+                    <dd>满300减70</dd>
+                </dl>-->
+            </div>
+            <h3>精品行业会场</h3>
+            <img src="./img/1.png" alt="">
+        </section>
+        <footer>
+            <dl>
+                <dt><img src="./img/2.png" alt=""></dt>
+                <dd>主会场</dd>
+            </dl>
+            <dl>
+                <dt><img src="./img/3.png" alt=""></dt>
+                <dd>全部会场</dd>
+            </dl>
+            <dl>
+                <dt><img src="./img/4.png" alt=""></dt>
+                <dd>抢5折券</dd>
+            </dl>
+            <dl>
+                <dt><img src="./img/5.png" alt=""></dt>
+                <dd>榜单会场</dd>
+            </dl>
+            <dl>
+                <dt><img src="./img/6.png" alt=""></dt>
+                <dd>我的618</dd>
+            </dl>
+        </footer>
+    </div>
+    <script id="tpl" type="text/x-handlebars-template">
+        {{#each data}}
+        <dl>
+            <dt><img src="./{{img}}" alt=""></dt>
+            <dd>{{title}}</dd>
+        </dl>
+        {{/each}}
+    </script>
+    <script src="./js/handlebars-v4.0.11.js"></script>
+    <script src="./js/jquery-2.1.1.min.js"></script>
+    <script>
+        $.ajax({
+            url: '/api/data',
+            data: 'json',
+            success: function(data) {
+                console.log(data);
+                var tpl = $('#tpl').html();
+                console.log(tpl);
+                var template = Handlebars.compile(tpl);
+                console.log(template);
+                var html = template(data);
+                console.log(html);
+                $('section>div').html(html);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        })
+    </script>
+</body>
+
+</html>
